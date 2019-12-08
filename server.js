@@ -2,17 +2,17 @@
 
 //Application dependencies
 require('dotenv').config();
-const cors = require('cors');
-const superagent = require('superagent');
 const express = require('express');
+const cors = require('cors');
+const pg = require('pg');
+const PORT = process.env.PORT;
 const app = express();
-const pg = require('pg')
-
 app.use(cors());
 
 //Configure Database
-const PORT = process.env.PORT || 3000;
 const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('err', err => console.error(err));
 
 //Homepage route
 function getHome(request, response) {
@@ -25,8 +25,16 @@ function notFoundHandler(request,response) {
 function errorHandler(error,request,response) {
   response.status(500).send(error);
 };
+//MIDDLEWARE
+app.use('*', notFoundHandler);
+app.use(errorHandler);
 
 //API Routes
+// app.get('/', getHome);
+// app.get('/location', getLocation);
+// app.get('/weather', getWeather);
+// app.get('/movies', getMovies);
+// app.get('/reviews', getYelp);
 
 //Constructors
 
