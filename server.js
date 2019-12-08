@@ -37,7 +37,13 @@ app.use(errorHandler);
 // app.get('/reviews', getYelp);
 
 //Constructors
+//WEATHER
 
+//LOCATION
+
+//MOVIES
+
+//YELP
 
 //Server listening
 app.listen(PORT, () => console.log('Server is up and listening on PORT ${PORT}'));
