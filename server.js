@@ -29,21 +29,20 @@ function errorHandler(error,request,response) {
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
-//API Routes
-// app.get('/', getHome);
-// app.get('/location', getLocation);
+//REQUIRE API ROUTES
+const getLocation = require('./routes/location.js');
+
+//API ROUTES
+app.get('/', getHome);
+app.get('/location', getLocation);
 // app.get('/weather', getWeather);
 // app.get('/movies', getMovies);
 // app.get('/reviews', getYelp);
 
-//Constructors
-//WEATHER
 
-//LOCATION
 
-//MOVIES
-
-//YELP
 
 //Server listening
-app.listen(PORT, () => console.log('Server is up and listening on PORT ${PORT}'));
+app.listen(PORT, ()=> {
+  console.log('server and db are up, listening on port ', PORT);
+});
