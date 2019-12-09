@@ -102,6 +102,7 @@
     "pify": "^3.0.0",
     "prepend-http": "^1.0.4",
     "pseudomap": "^1.0.2",
+    "psql": "0.0.1",
     "pstree.remy": "^1.1.7",
     "range-parser": "^1.2.1",
     "rc": "^1.2.8",

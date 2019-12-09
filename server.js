@@ -12,7 +12,6 @@ app.use(cors());
 
 //Configure Database
 const client = new pg.Client(process.env.DATABASE_URL);
-client.connect();
 client.on('err', err => console.error(err));
 
 //HOMEPAGE 
@@ -29,17 +28,18 @@ function errorHandler(error,request,response) {
 };
 
 //REQUIRE API MODULES
-const getWeather = require('./routes/weather');
-const getLocation = require('./routes/location');
+// const getWeather = require('./routes/weather');
+const Location = require('./routes/location');
 // const getMovies = require('./dataModules/movies.js');
 // const getYelp = require('./dataModules/reviews.js');
 
 // API ROUTES 
 app.get('/', getHome);
-app.get('/location', getLocation);
-app.get('/weather', getWeather);
+app.get('/location', Location);
+// app.get('/weather', getWeather);
 // app.get('/movies', getMovies);
 // app.get('/reviews', getYelp);
+
 
 
 //MIDDLEWARE
@@ -47,6 +47,7 @@ app.use('*', notFoundHandler);
 app.use(errorHandler);
 
 // Make sure the server is listening for requests
+client.connect();
 app.listen(PORT, ()=> {
   console.log('Listening on port ', PORT);
 });
