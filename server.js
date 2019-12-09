@@ -31,14 +31,14 @@ function errorHandler(error,request,response) {
 const getWeather = require('./routes/weather');
 const Location = require('./routes/location');
 const getMovies = require('./routes/movies.js');
-// const getYelp = require('./routes/reviews.js');
+const getYelp = require('./routes/reviews.js');
 
 // API ROUTES 
 app.get('/', getHome);
 app.get('/location', Location);
 app.get('/weather', getWeather);
 app.get('/movies', getMovies);
-// app.get('/reviews', getYelp);
+app.get('/reviews', getYelp);
 
 
 
